@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 @Data
 // lombok 在编译阶段 为实体类自动添加getter setter toString方法
 // pom 文件中引入依赖 在实体类上添加注解
-public class User {
+public class AdminUser {
     private Long id;//主键ID
     private String username;//用户名
     private String password;//密码

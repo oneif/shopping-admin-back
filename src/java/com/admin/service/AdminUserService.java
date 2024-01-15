@@ -1,10 +1,10 @@
 package com.admin.service;
 
-import com.admin.pojo.User;
+import com.admin.pojo.AdminUser;
 
-public interface UserService {
+public interface AdminUserService {
     // 根据用户名查询用户
-    User findByUserName(String username);
+    AdminUser findByUserName(String username);
 
     // 注册方法
     void register(String username, String password);
