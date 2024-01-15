@@ -1,6 +1,7 @@
 package com.admin.service;
 
 import com.admin.pojo.ProductType;
+
 import java.util.List;
 
 public interface ProductTypeService {

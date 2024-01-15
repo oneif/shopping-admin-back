@@ -1,9 +1,9 @@
 package com.admin.service.impl;
 
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.admin.mapper.ProductTypeMapper;
 import com.admin.pojo.ProductType;
 import com.admin.service.ProductTypeService;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
