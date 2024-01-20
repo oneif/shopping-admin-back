@@ -26,7 +26,8 @@ public class BusinessController {
                 List<BusinessUser> businessUsers = businessUserService.selectAll();
                 return Result.success("成功", businessUsers);
             case "update":
-                // todo
+                businessUserService.updateStatusById(businessId, status);
+                return Result.success("更新成功");
         }
         return null;
     }

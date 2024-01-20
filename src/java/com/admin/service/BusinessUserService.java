@@ -10,5 +10,5 @@ public interface BusinessUserService {
     List<BusinessUser> selectAll();
 
     // 根据id更改审核状态
-    String updateStatusById(Long id);
+    void updateStatusById(String ids, String status);
 }

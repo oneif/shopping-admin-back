@@ -18,13 +18,18 @@ public class BusinessUserServiceImpl implements BusinessUserService {
     @Override
     public List<BusinessUser> selectAll() {
         QueryWrapper<BusinessUser> qw = new QueryWrapper<>();
-        // todo
         return businessUserMapper.selectList(qw.select("id", "username", "telephone", "email", "user_pic", "introduction", "status"));
     }
 
     @Override
-    public String updateStatusById(Long id) {
-        return null;
+    public void updateStatusById(String idStr, String status) {
+        String[] ids = idStr.split(",");
+        BusinessUser businessUser = new BusinessUser();
+        for (String id : ids) {
+            businessUser.setId(Long.valueOf(id));
+            businessUser.setStatus(status);
+            businessUserMapper.updateById(businessUser);
+        }
     }
 }
 
