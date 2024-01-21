@@ -1,13 +1,12 @@
 package com.admin.service;
 
 import com.admin.pojo.BusinessUser;
-
-import java.util.List;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 
 public interface BusinessUserService {
 
     // 查询所有商户信息
-    List<BusinessUser> selectAll();
+    Page<BusinessUser> selectAll(Long page, Long size);
 
     // 根据id更改审核状态
     void updateStatusById(String ids, String status);

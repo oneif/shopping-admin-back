@@ -4,10 +4,9 @@ import com.admin.mapper.BusinessUserMapper;
 import com.admin.pojo.BusinessUser;
 import com.admin.service.BusinessUserService;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class BusinessUserServiceImpl implements BusinessUserService {
@@ -16,9 +15,11 @@ public class BusinessUserServiceImpl implements BusinessUserService {
     private BusinessUserMapper businessUserMapper;
 
     @Override
-    public List<BusinessUser> selectAll() {
+    public Page<BusinessUser> selectAll(Long page, Long size) {
+        Page<BusinessUser> businessUserPage = new Page<>(page, size);
         QueryWrapper<BusinessUser> qw = new QueryWrapper<>();
-        return businessUserMapper.selectList(qw.select("id", "username", "telephone", "email", "user_pic", "introduction", "status"));
+        qw.select("id", "username", "telephone", "email", "user_pic", "introduction", "status");
+        return businessUserMapper.selectPage(businessUserPage, qw);
     }
 
     @Override
