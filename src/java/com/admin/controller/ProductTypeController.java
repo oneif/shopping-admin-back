@@ -21,21 +21,26 @@ public class ProductTypeController {
     @PostMapping("/type")
     public Result productType(@RequestParam("action") String action, ProductType productType) {
         switch (action) {
-            case "add":
+            case "add" -> {
                 productTypeService.addProductType(productType);
                 return Result.success("添加成功");
-            case "delete":
+            }
+            case "delete" -> {
                 productTypeService.deleteProductTypeById(String.valueOf(productType.getId()));
                 return Result.success("删除成功");
-            case "update":
+            }
+            case "update" -> {
                 productTypeService.updateProductType(productType);
                 return Result.success("更新成功");
-            case "search":
+            }
+            case "search" -> {
                 List<ProductType> search = productTypeService.search(productType.getName());
-                return Result.success("成功",search);
-            case "selectAll":
+                return Result.success("成功", search);
+            }
+            case "selectAll" -> {
                 List<ProductType> productTypes = productTypeService.selectAllProductType();
                 return Result.success("成功", productTypes);
+            }
         }
         return null;
     }

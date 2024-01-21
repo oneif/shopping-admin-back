@@ -22,12 +22,14 @@ public class BusinessController {
     @PostMapping("/business")
     public Result<List<BusinessUser>> business(@RequestParam("action") String action, String businessId, String status) {
         switch (action) {
-            case "list":
+            case "list" -> {
                 List<BusinessUser> businessUsers = businessUserService.selectAll();
                 return Result.success("成功", businessUsers);
-            case "update":
+            }
+            case "update" -> {
                 businessUserService.updateStatusById(businessId, status);
                 return Result.success("更新成功");
+            }
         }
         return null;
     }
