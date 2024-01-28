@@ -22,8 +22,11 @@ public class ProductTypeController {
     public Result productType(@RequestParam("action") String action, ProductType productType) {
         switch (action) {
             case "add" -> {
-                productTypeService.addProductType(productType);
-                return Result.success("添加成功");
+                ProductType productTypeName = productTypeService.selectByName(productType.getName());
+                if (productTypeName == null) {
+                    productTypeService.addProductType(productType);
+                    return Result.success("添加成功");
+                } else return Result.error("分类名称已存在");
             }
             case "delete" -> {
                 productTypeService.deleteProductTypeById(String.valueOf(productType.getId()));

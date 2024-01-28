@@ -15,4 +15,6 @@ public interface ProductTypeService {
     List<ProductType> search(String name);
 
     List<ProductType> selectAllProductType();
+
+    ProductType selectByName(String name);
 }

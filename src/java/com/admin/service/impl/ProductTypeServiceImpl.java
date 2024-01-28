@@ -4,6 +4,7 @@ import com.admin.mapper.ProductTypeMapper;
 import com.admin.pojo.ProductType;
 import com.admin.service.ProductTypeService;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,12 +34,18 @@ public class ProductTypeServiceImpl implements ProductTypeService {
     @Override
     public List<ProductType> search(String name) {
         LambdaQueryWrapper<ProductType> lqw = new LambdaQueryWrapper<>();
-        return productTypeMapper.selectList(lqw.like(ProductType::getName,name));
+        return productTypeMapper.selectList(lqw.like(ProductType::getName, name));
     }
 
     @Override
     public List<ProductType> selectAllProductType() {
         return productTypeMapper.selectList(null);
+    }
+
+    @Override
+    public ProductType selectByName(String name) {
+        QueryWrapper<ProductType> qw = new QueryWrapper<>();
+        return productTypeMapper.selectOne(qw.eq("name", name));
     }
 }
 
