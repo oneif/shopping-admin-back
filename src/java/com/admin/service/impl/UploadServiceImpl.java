@@ -17,14 +17,12 @@ public class UploadServiceImpl implements UploadService {
 
     @Override
     public String uploadImage(MultipartFile file) throws IOException {
-        System.out.println(upload.getPath());
         if (!upload.getAllowTypes().contains(file.getContentType())) {
             throw new IOException("文件上传类型错误！");
         }
         String fileName = file.getOriginalFilename();
         File newFile = new File(upload.getPath() + fileName);
         file.transferTo(newFile);
-        System.out.println(newFile.getPath());
         return fileName;
     }
 }

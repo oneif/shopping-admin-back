@@ -1,5 +1,6 @@
 package com.admin.controller;
 
+import com.admin.pojo.Result;
 import com.admin.service.UploadService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,7 +17,9 @@ public class UploadController {
     UploadService uploadService;
 
     @PostMapping("/upload")
-    public String upload(@RequestParam("file") MultipartFile file) throws Exception {
-        return uploadService.uploadImage(file);
+    public Result<String> upload(@RequestParam("file") MultipartFile file) throws Exception {
+        String url = "http://localhost:8080/admin/";
+        String fileName = uploadService.uploadImage(file);
+        return Result.success("上传成功", url + fileName);
     }
 }
