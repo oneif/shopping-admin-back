@@ -15,10 +15,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/admin")
-public class BusinessController {
+public class BusinessUserController {
 
     @Autowired
-    BusinessUserService businessUserService;
+    private BusinessUserService businessUserService;
 
     @PostMapping("/business/list")
     public PageResult<List<BusinessUser>> businessList(String page, String size) {
