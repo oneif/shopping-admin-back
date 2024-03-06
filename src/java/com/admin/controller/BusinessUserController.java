@@ -23,9 +23,7 @@ public class BusinessUserController {
     @PostMapping("/business/list")
     public PageResult<List<BusinessUser>> businessList(String page, String size) {
         Page<BusinessUser> businessUsers = businessUserService.selectAll(Long.valueOf(page), Long.valueOf(size));
-        Integer total = Math.toIntExact(businessUsers.getTotal());
-        Integer pages = Math.toIntExact(businessUsers.getPages());
-        return PageResult.success("成功", businessUsers.getRecords(), Integer.parseInt(page), Integer.parseInt(size), total, pages);
+        return PageResult.success("成功", businessUsers.getRecords(), Integer.parseInt(page), Integer.parseInt(size), Math.toIntExact(businessUsers.getTotal()), Math.toIntExact(businessUsers.getPages()));
     }
 
     @PostMapping("/business")
